@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:musafir/screens/LoginScreen/login_screen.dart';
+import 'package:musafir/screens/SiginScreen/sign_in_screen.dart';
 
 import '../../Constants/Colors.dart';
 import '../../Widgets/CustomWidgets/custom_text.dart';
@@ -58,7 +58,7 @@ class _TrackYourRideState extends State<TrackYourRide> {
             SizedBox(height: 70.h,),
             InkWell(
               onTap: (){
-                Get.to(LoginScreen());
+                Get.to(SignInScreen());
               },
               child: Container(
                 width: 190.w,

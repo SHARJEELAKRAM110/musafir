@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:musafir/Constants/Colors.dart';
 import 'package:musafir/Widgets/CustomWidgets/custom_text.dart';
 import 'package:musafir/Widgets/Round%20Button.dart';
 
 import '../../Widgets/customtext_formfield.dart';
+import '../ForgetPaasword/forget_password.dart';
 class Login extends StatefulWidget {
   const Login({super.key});
 
@@ -12,6 +15,8 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  TextEditingController emailController=TextEditingController();
+  TextEditingController passwordController=TextEditingController();
   bool isChecked = false;
   @override
   Widget build(BuildContext context) {
@@ -99,19 +104,28 @@ class _LoginState extends State<Login> {
               ],
             ),
             SizedBox(height: 40.h,),
-            CustomTextFormFiled(hintText: 'Email or Mobile number',),
+            CustomTextFormFiled(hintText: 'Email or Mobile number',
+            controller: emailController,),
             SizedBox(height: 20.h,),
-            CustomTextFormFiledPassword(hintText: 'Password',),
+            CustomTextFormFiledPassword(hintText: 'Password',
+            controller: passwordController,),
+            SizedBox(height: 10.h,),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Row(
                   children: [
                     Checkbox(
-                      value: isChecked, onChanged: (bool? value) {
-                      isChecked=value!;
-                    },
-                    ),
+                      activeColor: AppColors().blueMain,
+                        value: isChecked,
+                        shape: RoundedRectangleBorder(
+                        ),
+                        onChanged: (value){
+                          setState(() {
+                            isChecked = !isChecked;
+                            print(isChecked);
+                          });
+                        }),
                     CustomText(text:
                       'Keep me sign in',
                         color: Color(0xFF4B5563),
@@ -131,7 +145,9 @@ class _LoginState extends State<Login> {
               ],
             ),
             SizedBox(height: 20.h,),
-            RoundButton(title: "Login", onpress: (){},
+            RoundButton(title: "Login", onpress: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>ForgetPassword()));
+            },
             ),
           ],
         ),

@@ -4,16 +4,16 @@ import 'package:musafir/Constants/Colors.dart';
 import 'package:musafir/Widgets/CustomWidgets/custom_text.dart';
 
 import 'create_account.dart';
-import 'inner_login.dart';
+import 'login.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class SignInScreen extends StatefulWidget {
+  const SignInScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<SignInScreen> createState() => _SignInScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _SignInScreenState extends State<SignInScreen> {
   List<String> statusList = [
     "Login",
     "Create Account",
