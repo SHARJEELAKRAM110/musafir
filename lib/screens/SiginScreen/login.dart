@@ -135,18 +135,22 @@ class _LoginState extends State<Login> {
                       ),
                   ],
                 ),
-                CustomText(text:
-                  'Forget Password?',
-                    color: Color(0xFF4AC3B4),
-                    fontSize: 12,
-                    fontFamily: 'Inter',
-                    fontWeight: FontWeight.w600,
-                  ),
+                InkWell(
+                  onTap: (){
+                    Get.to(ForgetPassword());
+                  },
+                  child: CustomText(text:
+                    'Forget Password?',
+                      color: Color(0xFF4AC3B4),
+                      fontSize: 12,
+                      fontFamily: 'Inter',
+                      fontWeight: FontWeight.w600,
+                    ),
+                ),
               ],
             ),
             SizedBox(height: 20.h,),
             RoundButton(title: "Login", onpress: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>ForgetPassword()));
             },
             ),
           ],

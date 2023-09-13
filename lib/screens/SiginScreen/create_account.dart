@@ -142,7 +142,7 @@ class _CreateAccountState extends State<CreateAccount> {
                           fontSize: 12,
                           fontFamily: 'Inter',
                           fontWeight: FontWeight.w400,
-                          height: 0.13,
+                          height: 0.5,
                         ),
                       ),
                       TextSpan(
@@ -153,6 +153,7 @@ class _CreateAccountState extends State<CreateAccount> {
                           fontFamily: 'Inter',
                           fontWeight: FontWeight.w400,
 
+
                         ),
                       ),
                       TextSpan(
@@ -162,7 +163,7 @@ class _CreateAccountState extends State<CreateAccount> {
                           fontSize: 12,
                           fontFamily: 'Inter',
                           fontWeight: FontWeight.w400,
-                          height: 0.13,
+                          height: 0.4,
 
                         ),
                       ),
@@ -173,7 +174,7 @@ class _CreateAccountState extends State<CreateAccount> {
                           fontSize: 12,
                           fontFamily: 'Inter',
                           fontWeight: FontWeight.w400,
-                          height: 0.13,
+                          height: 0.5,
 
                         ),
                       ),
