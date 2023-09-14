@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "900342379761",
+    "project_id": "musafir-65ba6",
+    "storage_bucket": "musafir-65ba6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:900342379761:android:5f69d339f8677d05e6e550",
+        "android_client_info": {
+          "package_name": "com.appsexpert1.musafir"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC6dZLcOagoCB1C88IVMNWPbuUTHOiPemA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

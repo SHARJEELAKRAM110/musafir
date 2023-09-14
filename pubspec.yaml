@@ -38,6 +38,13 @@ dependencies:
   flutter_screenutil: ^5.9.0
   get: ^4.6.6
   country_list_pick: ^1.0.1+6
+  pin_code_fields: ^8.0.1
+  firebase_core: ^2.6.1
+  firebase_database: ^10.0.13
+  cloud_firestore: ^4.2.8
+  firebase_auth: ^4.7.2
+  firebase_storage: ^11.2.5
+
 
 dev_dependencies:
   flutter_test:

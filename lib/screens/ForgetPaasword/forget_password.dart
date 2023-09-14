@@ -1,8 +1,11 @@
 import 'package:country_list_pick/country_list_pick.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:musafir/Widgets/CustomWidgets/custom_text.dart';
+import 'package:musafir/screens/ForgetPaasword/verify_your_pin.dart';
 
+import '../../Constants/Colors.dart';
 import '../../Widgets/Round Button.dart';
 
 class ForgetPassword extends StatefulWidget {
@@ -16,6 +19,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors().bgWhite,
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.w),
         child: Column(
@@ -139,7 +143,9 @@ class _ForgetPasswordState extends State<ForgetPassword> {
             ),
             RoundButton(
               title: "Submit",
-              onpress: () {},
+              onpress: () {
+                Get.to(VerifyYourPin());
+              },
             ),
           ],
         ),

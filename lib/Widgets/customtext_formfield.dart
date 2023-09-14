@@ -9,17 +9,24 @@ class CustomTextFormFiled extends StatelessWidget {
   final String hintText;
   final String? validateText;
   final TextAlign textAlign;
+  final void Function(String)? onChanged;
 
   const CustomTextFormFiled(
       {this.controller,
         this.textInputType = TextInputType.multiline,
         required this.hintText,
         this.textAlign = TextAlign.start,
-        this.validateText});
+        this.validateText,
+        this.onChanged
+
+      });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onChanged: (value) {
+        print('Value changed: $value');
+      },
       cursorColor: const Color(0xff000000),
       controller: controller,
       keyboardType: textInputType,
@@ -75,9 +82,12 @@ class CustomTextFormFiledPassword extends StatefulWidget {
   final TextInputType textInputType;
   final String hintText;
   final TextAlign textAlign;
+  final void Function(String)? onChanged;
+
 
   const CustomTextFormFiledPassword(
       {this.controller,
+        this.onChanged,
         this.textInputType = TextInputType.visiblePassword,
         required this.hintText,
         this.textAlign = TextAlign.start});
@@ -94,6 +104,9 @@ class _CustomTextFormFiledPasswordState
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onChanged: (value) {
+        print('Value changed: $value');
+      },
       cursorColor: const Color(0xff000000),
       controller: widget.controller,
       keyboardType: widget.textInputType,

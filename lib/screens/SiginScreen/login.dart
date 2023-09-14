@@ -17,6 +17,7 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   TextEditingController emailController=TextEditingController();
   TextEditingController passwordController=TextEditingController();
+  Color buttonColorr = AppColors().gray;
   bool isChecked = false;
   @override
   Widget build(BuildContext context) {
@@ -108,7 +109,13 @@ class _LoginState extends State<Login> {
             controller: emailController,),
             SizedBox(height: 20.h,),
             CustomTextFormFiledPassword(hintText: 'Password',
-            controller: passwordController,),
+            controller: passwordController,
+              onChanged: (text) {
+              setState(() {
+                _updateButtonColor();
+              });
+              },
+            ),
             SizedBox(height: 10.h,),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -150,12 +157,23 @@ class _LoginState extends State<Login> {
               ],
             ),
             SizedBox(height: 20.h,),
-            RoundButton(title: "Login", onpress: (){
-            },
+            RoundButton(title: "Login", onpress: (){},
+              buttonColor: buttonColorr,
+
             ),
           ],
         ),
       ),
     );
   }
+  void _updateButtonColor() {
+    setState(() {
+      if (emailController.text.isNotEmpty&&passwordController.text.isNotEmpty) {
+        buttonColorr = AppColors().blueMain; // Change to your desired color
+      } else {
+        buttonColorr = AppColors().gray; // Change to your desired color
+      }
+    });
+  }
+
 }
