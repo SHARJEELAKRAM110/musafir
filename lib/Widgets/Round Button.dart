@@ -28,7 +28,7 @@ final Color textColor,buttonColor;
         height: height.h,
         width: width.w,
         decoration: BoxDecoration(
-          color: Color(0xFF4AC3B4),
+          color: buttonColor,
           borderRadius: BorderRadius.circular(20)
         ),
         child: loading?Center(child: CircularProgressIndicator()):

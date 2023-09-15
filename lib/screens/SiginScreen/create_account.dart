@@ -105,17 +105,41 @@ class _CreateAccountState extends State<CreateAccount> {
             ),
             SizedBox(height: 30.h,),
             CustomTextFormFiled(hintText: 'Email or Mobile number',
-              controller: emailController,),
+              controller: emailController,
+              onChanged: (text) {
+                print(text);
+                setState(() {
+                });
+              },
+            ),
             SizedBox(height: 10.h,),
             CustomTextFormFiledPassword(hintText: 'Password',
-              controller: passwordController,),
+              controller: passwordController,
+              onChanged: (text) {
+                print(text);
+                setState(() {
+                });
+              },
+            ),
             SizedBox(height: 10.h,),
 
             CustomTextFormFiledPassword(hintText: 'Confirm Password',
-              controller: confirmpasswordController,),
+              controller: confirmpasswordController,
+              onChanged: (text) {
+                print(text);
+                setState(() {
+                });
+              },
+            ),
             SizedBox(height: 10.h,),
             SizedBox(height: 20.h,),
-            RoundButton(title: "Sign Up", onpress: (){},
+            RoundButton(title: "Sign Up", onpress: (){
+              setState(() {
+
+              });
+            },
+              buttonColor: emailController.text.isNotEmpty&&passwordController.text.isNotEmpty&&confirmpasswordController.text.isNotEmpty?AppColors().blueMain:AppColors().gray,
+
             ),
             SizedBox(height: 5.h,),
             Row(

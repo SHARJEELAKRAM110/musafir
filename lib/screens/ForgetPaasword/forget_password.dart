@@ -1,4 +1,5 @@
 import 'package:country_list_pick/country_list_pick.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -16,6 +17,17 @@ class ForgetPassword extends StatefulWidget {
 }
 
 class _ForgetPasswordState extends State<ForgetPassword> {
+  FirebaseAuth _auth = FirebaseAuth.instance;
+  final phoneNumberController = TextEditingController();
+  bool loading = false;
+  String code="+92";
+
+
+  @override
+  void dispose() {
+    super.dispose();
+    phoneNumberController.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,10 +81,10 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                 children: [
                   Container(
                     decoration: BoxDecoration(
-                      border: Border.all(color: Colors.black),
+                      border: Border.all(color: AppColors().blueMain),
                       borderRadius: BorderRadius.circular(10.0),
                     ),
-                    height: 45.h,
+                    height: 50.h,
                     width: 100.w,
                     child: CountryListPick(
                       theme: CountryTheme(
@@ -85,24 +97,40 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                       // Set default value
                       initialSelection: '+92',
                       // or
-                      // initialSelection: 'US'
-                      onChanged: (CountryCode? code) {},
+                      onChanged: (CountryCode? countryCode) {
+                        code=countryCode?.code??"+92";
+
+                      },
                     ),
                   ),
                   SizedBox(
                     height: 50.h,
                     width: 230.w,
                     child: TextField(
+                      controller: phoneNumberController,
                       keyboardType: TextInputType.number,
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.only(top: 5.h),
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
-                            borderSide: BorderSide(color: Color(0xffD9D9D9))),
+                            borderSide: BorderSide(color: AppColors().blueMain)
+                        ),
                         enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10)),
-                        hintText: 'Enter Phone Number',
-                      ),
+                            borderRadius: BorderRadius.circular(10),
+                            borderSide: BorderSide(color: AppColors().blueMain)
+
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                            borderSide: BorderSide(color: AppColors().blueMain)
+
+                        ),
+                        errorBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                            borderSide: BorderSide(color: Colors.red)
+
+                        ),
+                        hintText: '3171406070',                      ),
                       textAlign: TextAlign.center,
                     ),
                   ),
@@ -144,8 +172,40 @@ class _ForgetPasswordState extends State<ForgetPassword> {
             RoundButton(
               title: "Submit",
               onpress: () {
-                Get.to(VerifyYourPin());
-              },
+                  if(phoneNumberController.text.isNotEmpty){
+                    loading = true;
+                    setState(() {});
+                    _auth.verifyPhoneNumber(
+                        phoneNumber: "$code${phoneNumberController.text}",
+                        verificationCompleted: (_) {
+                          setState(() {
+                            loading = false;
+                          });
+                        },
+                        verificationFailed: (e) {
+                          setState(() {
+                            loading = false;
+                          });
+                          Get.snackbar("Error", "Something wrong");
+                        },
+                        codeSent: (String verificationId, int? token) {
+                          setState(() {
+                            loading = false;
+                          });
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => VerifyYourPin()));
+                        },
+                        codeAutoRetrievalTimeout: (e) {
+                          setState(() {
+                            loading = false;
+                          });
+                          Get.snackbar("Error", "Something wrong");
+                        });}else{
+                    Get.snackbar("Empty", "Please enter something");
+                  }
+                },
             ),
           ],
         ),

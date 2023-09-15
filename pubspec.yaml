@@ -44,7 +44,11 @@ dependencies:
   cloud_firestore: ^4.2.8
   firebase_auth: ^4.7.2
   firebase_storage: ^11.2.5
-
+  alt_sms_autofill: ^1.0.0
+  permission_handler: ^11.0.0
+  http: ^1.1.0
+  timer_count_down: ^2.2.2
+  sms_autofill: ^2.3.0
 
 dev_dependencies:
   flutter_test:

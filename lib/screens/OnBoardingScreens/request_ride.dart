@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:musafir/Constants/Colors.dart';
 import 'package:musafir/Widgets/CustomWidgets/custom_text.dart';
+import 'package:musafir/screens/SiginScreen/sign_in_screen.dart';
 
 class RequestRide extends StatefulWidget {
   const RequestRide({super.key});
@@ -25,7 +27,9 @@ class _RequestRideState extends State<RequestRide> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 InkWell(
-                    onTap: (){},
+                    onTap: (){
+                      Get.offAll(SignInScreen());
+                    },
                     child: CustomText(text: "Skip",color:const Color(0xff4B5563),)),
               ],
             ),

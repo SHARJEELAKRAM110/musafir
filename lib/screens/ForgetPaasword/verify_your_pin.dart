@@ -1,5 +1,7 @@
+import 'package:alt_sms_autofill/alt_sms_autofill.dart';
 import 'package:country_list_pick/country_list_pick.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:musafir/Constants/Colors.dart';
@@ -17,6 +19,39 @@ class VerifyYourPin extends StatefulWidget {
 }
 
 class _VerifyYourPinState extends State<VerifyYourPin> {
+  TextEditingController textEditingController=TextEditingController();
+
+  String _comingSms = 'Unknown';
+
+  Future<void> initSmsListener() async {
+
+    String comingSms;
+    try {
+      comingSms = await AltSmsAutofill().listenForSms??'';
+    } on PlatformException {
+      comingSms = 'Failed to get Sms.';
+    }
+    if (!mounted) return;
+    setState(() {
+      _comingSms = comingSms;
+      print("====>Message: ${_comingSms}");
+      print("${_comingSms[0]}");
+      textEditingController.text = _comingSms[0] + _comingSms[1] + _comingSms[2] + _comingSms[3]
+          + _comingSms[4] + _comingSms[5]; //used to set the code in the message to a string and setting it to a textcontroller. message length is 38. so my code is in string index 32-37.
+    });
+  }
+  @override
+  void initState() {
+    super.initState();
+    textEditingController = TextEditingController();
+    initSmsListener();
+  }
+  @override
+  void dispose() {
+    textEditingController.dispose();
+    AltSmsAutofill().unregisterListener();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -180,13 +215,16 @@ class _VerifyYourPinState extends State<VerifyYourPin> {
           blurRadius: 10,
         )
       ],
+      onChanged: (value) {
+        print(value);
+        setState(() {
+          print('$value');
+        });
+      },
       onCompleted: (v) {
         debugPrint("Completed");
       },
 
-      onChanged: (value) {
-
-      },
       beforeTextPaste: (text) {
         debugPrint("Allowing to paste $text");
         //if you return true then it will show the paste confirmation dialog. Otherwise if false, then nothing will happen.

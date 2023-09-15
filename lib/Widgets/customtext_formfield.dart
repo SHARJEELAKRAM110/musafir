@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class CustomTextFormFiled extends StatelessWidget {
+class CustomTextFormFiled extends StatefulWidget {
   final TextEditingController? controller;
   final TextInputType textInputType;
   final String hintText;
@@ -22,15 +22,18 @@ class CustomTextFormFiled extends StatelessWidget {
       });
 
   @override
+  State<CustomTextFormFiled> createState() => _CustomTextFormFiledState();
+}
+
+class _CustomTextFormFiledState extends State<CustomTextFormFiled> {
+  @override
   Widget build(BuildContext context) {
     return TextFormField(
-      onChanged: (value) {
-        print('Value changed: $value');
-      },
+      onChanged: widget.onChanged,
       cursorColor: const Color(0xff000000),
-      controller: controller,
-      keyboardType: textInputType,
-      textAlign: textAlign,
+      controller: widget.controller,
+      keyboardType: widget.textInputType,
+      textAlign: widget.textAlign,
       decoration: InputDecoration(
         disabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
@@ -60,7 +63,7 @@ class CustomTextFormFiled extends StatelessWidget {
               color: Colors.red,
             )),
         contentPadding: EdgeInsets.symmetric(vertical: 4.h, horizontal: 20.w),
-        hintText: hintText,
+        hintText: widget.hintText,
         hintStyle: TextStyle(
             fontFamily: "Inter",
             color: const Color(0xff677294),
@@ -69,7 +72,7 @@ class CustomTextFormFiled extends StatelessWidget {
       ),
       validator: (value) {
         if (value == null || value.isEmpty) {
-          return validateText;
+          return widget.validateText;
         }
         return null;
       },
@@ -82,7 +85,7 @@ class CustomTextFormFiledPassword extends StatefulWidget {
   final TextInputType textInputType;
   final String hintText;
   final TextAlign textAlign;
-  final void Function(String)? onChanged;
+  final  Function(String)? onChanged;
 
 
   const CustomTextFormFiledPassword(
@@ -104,9 +107,7 @@ class _CustomTextFormFiledPasswordState
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      onChanged: (value) {
-        print('Value changed: $value');
-      },
+      onChanged: widget.onChanged,
       cursorColor: const Color(0xff000000),
       controller: widget.controller,
       keyboardType: widget.textInputType,

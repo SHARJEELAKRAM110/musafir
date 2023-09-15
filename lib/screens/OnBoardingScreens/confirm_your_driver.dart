@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:musafir/screens/SiginScreen/sign_in_screen.dart';
 
 import '../../Constants/Colors.dart';
 import '../../Widgets/CustomWidgets/custom_text.dart';
@@ -26,7 +28,9 @@ class _ConfirmYourDriverState extends State<ConfirmYourDriver> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 InkWell(
-                    onTap: (){},
+                    onTap: (){
+                      Get.offAll(SignInScreen());
+                    },
                     child: CustomText(text: "Skip",color:const Color(0xff4B5563),)),
               ],
             ),
