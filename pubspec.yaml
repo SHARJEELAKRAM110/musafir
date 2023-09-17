@@ -49,7 +49,9 @@ dependencies:
   http: ^1.1.0
   timer_count_down: ^2.2.2
   sms_autofill: ^2.3.0
-
+  cached_network_image: ^3.2.3
+  flutter_rating_bar: ^4.0.1
+  path_provider: ^2.1.1
 dev_dependencies:
   flutter_test:
     sdk: flutter

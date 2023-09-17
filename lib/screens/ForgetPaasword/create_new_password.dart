@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:musafir/Widgets/CustomWidgets/custom_text.dart';
 import 'package:musafir/screens/ForgetPaasword/verify_your_pin.dart';
+import 'package:musafir/screens/HomeScreen/home_screen.dart';
 
 import '../../Constants/Colors.dart';
 import '../../Widgets/Round Button.dart';
@@ -107,7 +108,7 @@ class _CreateNewPasswordState extends State<CreateNewPassword> {
                   height: 50.h,
                   width: 259.w,
                   child: MaterialButton(onPressed: (){
-                    Get.back();
+                    Get.to(HomeScreen());
                   },
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),

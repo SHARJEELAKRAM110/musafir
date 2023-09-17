@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:musafir/Constants/Colors.dart';
 import 'package:musafir/Widgets/CustomWidgets/custom_text.dart';
 import 'package:musafir/Widgets/Round%20Button.dart';
+import 'package:musafir/screens/HomeScreen/home_screen.dart';
 
 import '../../Widgets/customtext_formfield.dart';
 import '../ForgetPaasword/forget_password.dart';
@@ -163,10 +164,7 @@ class _LoginState extends State<Login> {
             ),
             SizedBox(height: 20.h,),
             RoundButton(title: "Login", onpress: (){
-              setState(() {
-
-              });
-
+Get.to(HomeScreen());
             },
               buttonColor: emailController.text.isNotEmpty&&passwordController.text.isNotEmpty?AppColors().blueMain:AppColors().gray,
             ),

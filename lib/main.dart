@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:musafir/screens/HomeScreen/home_screen.dart';
 import 'package:musafir/screens/SplashScreen/splash_screen.dart';
 
 Future<void> main() async{
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
               colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
               useMaterial3: true,
             ),
-            home: const SplashScreen(),
+            home: HomeScreen(),
           );
         });
   }
